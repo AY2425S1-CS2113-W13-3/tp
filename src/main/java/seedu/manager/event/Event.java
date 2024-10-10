@@ -56,4 +56,14 @@ public class Event {
     public void setEventVenue(String eventVenue) {
         this.eventVenue = eventVenue;
     }
+
+    /**
+     * Returns a string representation of the event, indicating its name, time and venue.
+     *
+     * @return A string that shows the event's name, time and venue.
+     */
+    @Override
+    public String toString(){
+        return "Event name: " + eventName + "/ Event time: " + eventTime + "/ Event venue: " + eventVenue;
+    }
 }
