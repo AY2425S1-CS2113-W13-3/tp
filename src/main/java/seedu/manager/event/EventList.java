@@ -30,6 +30,9 @@ public class EventList  {
      * @return The list of events.
      */
     public ArrayList<Event> getList() {
+        for (Event event : eventList) {
+            System.out.println(event);
+        }
         return eventList;
     }
 
@@ -38,5 +41,10 @@ public class EventList  {
      */
     public int getListSize() {
         return eventList.size();
+    }
+
+    public void addEvent(String eventName) {
+        Event newEvent = new Event(eventName);
+        eventList.add(newEvent);
     }
 }
