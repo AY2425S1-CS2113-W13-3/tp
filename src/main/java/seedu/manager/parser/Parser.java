@@ -1,11 +1,6 @@
 package seedu.manager.parser;
 
-import seedu.manager.command.Command;
-import seedu.manager.command.AddCommand;
-import seedu.manager.command.ExitCommand;
-import seedu.manager.command.MenuCommand;
-import seedu.manager.command.EchoCommand;
-import seedu.manager.command.ListCommand;
+import seedu.manager.command.*;
 import seedu.manager.event.EventList;
 
 import java.util.Arrays;
@@ -30,6 +25,8 @@ public class Parser {
         switch (commandWord) {
         case AddCommand.COMMAND_WORD:
             return new AddCommand(description, events);
+        case RemoveCommand.COMMAND_WORD:
+            return new RemoveCommand(description, events);
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
         case ExitCommand.COMMAND_WORD:
