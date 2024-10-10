@@ -8,7 +8,7 @@ import seedu.manager.ui.Ui;
 
 public class Main {
     private static final Ui ui = new Ui();
-    private static final EventList events = new EventList();
+    private static EventList events = new EventList();
 
     /**
      * Main entry-point for the EventManagerCLI application.
@@ -29,8 +29,8 @@ public class Main {
         boolean isGettingCommands = true;
         while (isGettingCommands){
             String userCommandText = ui.getCommand();
-            command = new Parser().parseCommand(userCommandText);
-            command.setData(events);
+            command = new Parser().parseCommand(userCommandText, events);
+            //command.setData(events);
             CommandOutput output = command.execute();
             ui.showOutputToUser(output);
 

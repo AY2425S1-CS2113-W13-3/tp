@@ -30,6 +30,9 @@ public class EventList  {
      * @return The list of events.
      */
     public ArrayList<Event> getList() {
+        for (Event event : eventList) {
+            System.out.println(event.getEventName());
+        }
         return eventList;
     }
 
@@ -38,5 +41,31 @@ public class EventList  {
      */
     public int getListSize() {
         return eventList.size();
+    }
+
+    /**
+     * Adds a new event to the event list.
+     *
+     * @param eventName The name of the event to be added.
+     */
+    public void addEvent(String eventName) {
+        Event newEvent = new Event(eventName);
+        eventList.add(newEvent);
+    }
+
+    /**
+     * Removes an event from the event list by its name.
+     *
+     * @param eventName The name of the event to be removed.
+     * @return true if the event was found and removed; false otherwise.
+     */
+    public boolean removeEvent(String eventName) {
+        for (Event event : eventList) {
+            if (event.getEventName().equals(eventName)) {
+                eventList.remove(event);
+                return true; // Event found and removed
+            }
+        }
+        return false; // Event not found
     }
 }
