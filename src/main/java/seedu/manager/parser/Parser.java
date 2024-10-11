@@ -1,6 +1,12 @@
 package seedu.manager.parser;
 
-import seedu.manager.command.*;
+import seedu.manager.command.Command;
+import seedu.manager.command.AddCommand;
+import seedu.manager.command.RemoveCommand;
+import seedu.manager.command.ExitCommand;
+import seedu.manager.command.MenuCommand;
+import seedu.manager.command.EchoCommand;
+import seedu.manager.command.ListCommand;
 import seedu.manager.event.EventList;
 
 import java.util.Arrays;
