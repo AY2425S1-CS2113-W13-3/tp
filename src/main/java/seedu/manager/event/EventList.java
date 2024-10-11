@@ -27,6 +27,13 @@ public class EventList  {
     }
 
     /**
+     * @return  The event list.
+     */
+    public ArrayList<Event> getList() {
+        return eventList;
+    }
+
+    /**
      * @return The size of the event list.
      */
     public int getListSize() {

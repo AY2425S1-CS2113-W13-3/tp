@@ -30,23 +30,28 @@ public class Storage {
      * @throws IOException if there's an error writing to the file.
      */
     public void saveEvents(EventList events) throws IOException {
-        FileWriter writer = new FileWriter(filepath);
-        for (Event event : events.getList()) {
-            writer.write(event.getEventName() + "\n");
+        try (FileWriter writer = new FileWriter(filepath)) { // Using try-with-resources
+            for (Event event : events.getList()) {
+                writer.write(event.getEventName() + "," + event.getEventTime() + ","
+                        + event.getEventVenue() + "\n"); // Save event details
+            }
         }
-        writer.close();
     }
 
     /**
      * Loads events from the file and returns an EventList.
      *
-     * @return An EventList populated from the file.
      * @throws IOException if there's an error reading from the file.
      */
-    public EventList loadEvents(EventList events) throws IOException {
+    public void loadEvents(EventList events) throws IOException {
         for (String line : Files.readAllLines(Paths.get(filepath))) {
-            events.addEvent(line);
+            String[] parts = line.split(","); // Assuming CSV format
+            if (parts.length == 3) {
+                String eventName = parts[0].trim();
+                String time = parts[1].trim();
+                String venue = parts[2].trim();
+                events.addEvent(eventName, time, venue); // Create event from loaded data
+            }
         }
-        return events;
     }
 }
