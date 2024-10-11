@@ -19,6 +19,19 @@ public class Event {
     }
 
     /**
+     * Constructs an Event with the specified name, time, and venue.
+     *
+     * @param eventName  the name of the event
+     * @param eventTime  the time duration of the event
+     * @param eventVenue the venue of the event
+     */
+    public Event(String eventName, String eventTime, String eventVenue) {
+        this.eventName = eventName;
+        this.eventTime = eventTime;
+        this.eventVenue = eventVenue;
+    }
+
+    /**
      * @return the event name
      */
     public String getEventName() {
@@ -55,5 +68,15 @@ public class Event {
      */
     public void setEventVenue(String eventVenue) {
         this.eventVenue = eventVenue;
+    }
+
+    /**
+     * Returns a string representation of the event, indicating its name, time and venue.
+     *
+     * @return A string that shows the event's name, time and venue.
+     */
+    @Override
+    public String toString(){
+        return "Event name: " + eventName + "/ Event time: " + eventTime + "/ Event venue: " + eventVenue;
     }
 }

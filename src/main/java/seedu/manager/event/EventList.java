@@ -27,25 +27,31 @@ public class EventList  {
     }
 
     /**
-     * @return The list of events.
-     */
-    public ArrayList<Event> getList() {
-        for (Event event : eventList) {
-            System.out.println(event.getEventName());
-        }
-        return eventList;
-    }
-
-    /**
      * @return The size of the event list.
      */
     public int getListSize() {
         return eventList.size();
     }
 
-    public void addEvent(String eventName) {
-        Event newEvent = new Event(eventName);
+    /**
+     * Adds a new event to the event list.
+     * 
+     * This method creates a new instance of the {@link Event} class with the specified
+     * event name and adds it to the {@code eventList}.
+     *
+     * @param eventName the name of the event to be added
+     */
+    public void addEvent(String eventName, String time, String venue) {
+        Event newEvent = new Event(eventName, time, venue);
         eventList.add(newEvent);
+    }
+
+    /**
+     * @param index The index of event in the list (0 based indexing)
+     * @return The specific event in the event list.
+     */
+    public Event getEvent(int index) {
+        return eventList.get(index);
     }
 
     public boolean removeEvent(String eventName) {

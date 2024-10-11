@@ -43,8 +43,8 @@ public class Main {
         boolean isGettingCommands = true;
         while (isGettingCommands){
             String userCommandText = ui.getCommand();
-            command = new Parser().parseCommand(userCommandText, events);
-            //command.setData(events);
+            command = new Parser().parseCommand(userCommandText);
+            command.setData(events);
             CommandOutput output = command.execute();
             ui.showOutputToUser(output);
 
