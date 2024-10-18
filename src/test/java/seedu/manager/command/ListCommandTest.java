@@ -26,8 +26,8 @@ public class ListCommandTest {
     @Test
     public void execute_twoEvents_success() {
         String expectedMessage = "There are 2 events in your list! Here are your scheduled events:\n"
-                + "1. Event name: Event 1 / Event time: 2024-10-10 10:00 / Event venue: Venue A\n"
-                + "2. Event name: Event 2 / Event time: 2024-11-11 12:00 / Event venue: Venue B\n";
+                + "1. Event name: Event 1 / Event time: 2024-10-10 10:00 / Event venue: Venue A / Done: N\n"
+                + "2. Event name: Event 2 / Event time: 2024-11-11 12:00 / Event venue: Venue B / Done: N\n";
 
         assertEquals(expectedMessage, listCommand.getMessage());
         assertFalse(listCommand.getCanExit());
