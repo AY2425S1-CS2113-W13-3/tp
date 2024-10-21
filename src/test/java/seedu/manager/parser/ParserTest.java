@@ -4,22 +4,24 @@ import org.junit.jupiter.api.Test;
 import seedu.manager.command.AddCommand;
 import seedu.manager.command.Command;
 import seedu.manager.command.ExitCommand;
-import seedu.manager.command.InvalidCommand;
 import seedu.manager.command.MarkCommand;
 import seedu.manager.command.MenuCommand;
 import seedu.manager.command.ListCommand;
 import seedu.manager.command.RemoveCommand;
+import seedu.manager.exception.InvalidCommandException;
 
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ParserTest {
 
     @Test
     public void parseCommand_invalidString_invalid() {
         Parser parser = new Parser();
-        Command command = parser.parseCommand("Hello world!");
+        String commandString = "Hello world!";
 
-        assertInstanceOf(InvalidCommand.class, command);
+        assertThrows(InvalidCommandException.class,() -> {
+            parser.parseCommand(commandString);});
     }
 
     @Test
@@ -57,9 +59,10 @@ class ParserTest {
     @Test
     public void addCommand_addNoParameter_invalid() {
         Parser parser = new Parser();
-        Command command = parser.parseCommand("add");
+        String commandString = "add";
 
-        assertInstanceOf(InvalidCommand.class, command);
+        assertThrows(InvalidCommandException.class,() -> {
+            parser.parseCommand(commandString);});
     }
 
     @Test
@@ -73,9 +76,10 @@ class ParserTest {
     @Test
     public void removeCommand_removeNoParameter_invalid() {
         Parser parser = new Parser();
-        Command command = parser.parseCommand("remove");
+        String commandString = "remove";
 
-        assertInstanceOf(InvalidCommand.class, command);
+        assertThrows(InvalidCommandException.class,() -> {
+            parser.parseCommand(commandString);});
     }
 
     @Test
@@ -89,16 +93,18 @@ class ParserTest {
     @Test
     public void parseCommand_markEventNoStatus_invalid() {
         Parser parser = new Parser();
-        Command command = parser.parseCommand("mark -e event");
+        String commandString = "mark -e event";
 
-        assertInstanceOf(InvalidCommand.class, command);
+        assertThrows(InvalidCommandException.class,() -> {
+            parser.parseCommand(commandString);});
     }
 
     @Test
     public void parseCommand_markEventInvalidStatus_invalid() {
         Parser parser = new Parser();
-        Command command = parser.parseCommand("mark -e event -s yes");
+        String commandString = "mark -e event -s yes";
 
-        assertInstanceOf(InvalidCommand.class, command);
+        assertThrows(InvalidCommandException.class,() -> {
+            parser.parseCommand(commandString);});
     }
 }

@@ -8,6 +8,7 @@ public class AddCommand extends Command {
     public static final String COMMAND_WORD = "add";
     private static final String ADD_EVENT_MESSAGE = "Event added successfully";
     private static final String ADD_PARTICIPANT_MESSAGE = "Participant added successfully";
+    private static final String ADD_FAILURE_MESSAGE = "Event not found!";
     protected String eventName;
     protected String time;
     protected String venue;
@@ -56,8 +57,8 @@ public class AddCommand extends Command {
             this.eventList.addEvent(this.eventName, this.time, this.venue);
             this.message = ADD_EVENT_MESSAGE;
         } else {
-            this.eventList.addParticipantToEvent(this.participantName, this.eventName);
-            this.message = ADD_PARTICIPANT_MESSAGE;
+            boolean isAdded = this.eventList.addParticipantToEvent(this.participantName, this.eventName);
+            this.message = (isAdded) ? ADD_PARTICIPANT_MESSAGE : ADD_FAILURE_MESSAGE;
         }
     }
 }

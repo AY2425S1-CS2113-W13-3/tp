@@ -2,6 +2,7 @@ package seedu.manager;
 
 import seedu.manager.command.Command;
 import seedu.manager.event.EventList;
+import seedu.manager.exception.InvalidCommandException;
 import seedu.manager.parser.Parser;
 import seedu.manager.ui.Ui;
 
@@ -27,13 +28,17 @@ public class Main {
         Command command;
         boolean isGettingCommands = true;
         while (isGettingCommands){
-            String userCommandText = ui.getCommand();
-            command = new Parser().parseCommand(userCommandText);
-            command.setData(events);
-            command.execute();
-            ui.showOutputToUser(command);
+            try {
+                String userCommandText = ui.getCommand();
+                command = new Parser().parseCommand(userCommandText);
+                command.setData(events);
+                command.execute();
+                ui.showOutputToUser(command);
 
-            isGettingCommands = !command.getCanExit();
+                isGettingCommands = !command.getCanExit();
+            } catch (InvalidCommandException exception) {
+                ui.showErrorMessageToUser(exception);
+            }
         }
     }
 }

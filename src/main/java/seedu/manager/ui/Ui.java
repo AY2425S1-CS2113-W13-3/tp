@@ -37,10 +37,18 @@ public class Ui {
     }
 
     /**
-     * show the output message a of command to the users.
+     * show the output message of a command to the users.
      */
-    public void showOutputToUser(Command command){
+    public void showOutputToUser(Command command) {
         System.out.println(command.getMessage());
+        System.out.println(SEPARATOR);
+    }
+
+    /**
+     * Shows the error message of an exception to the user.
+     */
+    public void showErrorMessageToUser(Exception exception) {
+        System.out.println(exception.getMessage());
         System.out.println(SEPARATOR);
     }
 }

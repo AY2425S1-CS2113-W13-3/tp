@@ -94,18 +94,22 @@ public class EventList  {
     }
 
     /**
-     * Adds a participant to an existing event.
+     * Returns true if a participant can be added to a specified event,
+     * returns false otherwise.
      *
      * @param participantName the name of the participant to be added.
      * @param eventName the name of the event to which the participant will be added.
+     * @return {@code true} if the participant can be added to the event, {@code false} otherwise.
      */
-    public void addParticipantToEvent(String participantName, String eventName) {
+    public boolean addParticipantToEvent(String participantName, String eventName) {
         for (Event event : eventList) {
             if (event.getEventName().equals(eventName)) {
                 event.addParticipant(participantName);
-                return;
+                return true;
             }
         }
+
+        return false;
     }
 
     /**

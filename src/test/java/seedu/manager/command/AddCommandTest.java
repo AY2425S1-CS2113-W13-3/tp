@@ -36,5 +36,17 @@ public class AddCommandTest {
 
         assertEquals(1, eventList.getEvent(0).getParticipantCount());
     }
+
+    @Test
+    public void add_oneParticipantInvalidEvent_failure() {
+        EventList eventList = new EventList();
+        String expectedMessage = "Event not found!";
+
+        AddCommand addCommand = new AddCommand("Tom", "Event 1");
+        addCommand.setData(eventList);
+        addCommand.execute();
+
+        assertEquals(expectedMessage, addCommand.getMessage());
+    }
 }
 
