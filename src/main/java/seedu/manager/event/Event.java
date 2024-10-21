@@ -1,5 +1,7 @@
 package seedu.manager.event;
 
+import seedu.manager.item.Participant;
+
 import java.util.ArrayList;
 
 /**
@@ -7,7 +9,7 @@ import java.util.ArrayList;
  * It provides methods to access and modify the time and venue of the event.
  */
 public class Event {
-    protected ArrayList<String> participantList;
+    protected ArrayList<Participant> participantList;
     private final String eventName;
     private String eventTime;
     private String eventVenue;
@@ -44,7 +46,8 @@ public class Event {
      * @param participantName the name of the participant to be added to the list.
      */
     public void addParticipant(String participantName) {
-        this.participantList.add(participantName);
+        Participant participant = new Participant(participantName);
+        this.participantList.add(participant);
     }
 
     /**
@@ -62,7 +65,8 @@ public class Event {
      *         {@code false} if the participant was not found in the list.
      */
     public boolean removeParticipant(String participantName) {
-        return this.participantList.remove(participantName);
+        return this.participantList.removeIf((participant) ->
+                (participant.getName().equalsIgnoreCase(participantName)));
     }
 
     /**
@@ -95,7 +99,7 @@ public class Event {
         return eventVenue;
     }
 
-    public ArrayList<String> getParticipantList() {
+    public ArrayList<Participant> getParticipantList() {
         return participantList;
     }
 

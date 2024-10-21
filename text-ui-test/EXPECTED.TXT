@@ -33,5 +33,11 @@ Enter a command: There are 1 events in your list! Here are your scheduled events
 ------------------------
 Enter a command: Event not found!
 ------------------------
+Enter a command: Participant added successfully
+------------------------
+Enter a command: There are 1 participants in dinner party! Here are your participants:
+1. Mary (status: not present)
+
+------------------------
 Enter a command: Thank you for using EventManagerCLI. Goodbye!
 ------------------------

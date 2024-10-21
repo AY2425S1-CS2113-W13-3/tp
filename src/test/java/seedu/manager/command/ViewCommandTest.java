@@ -33,7 +33,7 @@ public class ViewCommandTest {
     @Test
     public void execute_twoEvents_success() {
         String expectedMessage = "There are 1 participants in Event 1! Here are your participants:\n"
-                + "1. Tom\n";
+                + "1. Tom (status: not present)\n";
 
         assertEquals(expectedMessage, viewCommand.getMessage());
         assertFalse(viewCommand.getCanExit());

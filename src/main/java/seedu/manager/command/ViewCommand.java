@@ -1,6 +1,7 @@
 package seedu.manager.command;
 
 import seedu.manager.event.Event;
+import seedu.manager.item.Participant;
 
 import java.util.Optional;
 
@@ -36,8 +37,8 @@ public class ViewCommand extends Command {
             StringBuilder outputMessage = new StringBuilder(
                     String.format(VIEW_MESSAGE, eventToView.get().getParticipantCount(), eventName) + "\n");
             int count = 1;
-            for (String participant : eventToView.get().getParticipantList()) {
-                outputMessage.append(String.format("%d. %s\n", count, participant));
+            for (Participant participant : eventToView.get().getParticipantList()) {
+                outputMessage.append(String.format("%d. %s\n", count, participant.toString()));
                 count++;
             }
 

@@ -7,4 +7,6 @@ list
 mark -e dinner party -s done
 list
 mark -e Saturday brunch -s done
+add -p Mary -e dinner party
+view -e dinner party
 exit

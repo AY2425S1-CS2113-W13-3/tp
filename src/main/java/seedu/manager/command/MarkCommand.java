@@ -14,8 +14,8 @@ public class MarkCommand extends Command {
     private static final String EVENT_UNMARK_MESSAGE = "Event marked not done";
     private static final String INVALID_EVENT_MESSAGE = "Event not found!";
 
-    private String eventName;
-    private boolean toMark;
+    protected String eventName;
+    protected boolean toMark;
 
     /**
      * Constructs a new MarkCommand with the given event name
