@@ -5,6 +5,7 @@ import seedu.manager.item.Participant;
 
 import java.util.Optional;
 
+//@@author glenn-chew
 /**
  * Represents a command to view the list of participants in an event.
  * The view command will search for an event by its name and display all its participants if found.

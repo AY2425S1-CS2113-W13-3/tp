@@ -1,5 +1,6 @@
 package seedu.manager.command;
 
+//@@author KuanHsienn
 /**
  * Represents a command to remove an event from the event list.
  * The remove command will search for an event by its name and remove it if found.
@@ -21,6 +22,7 @@ public class RemoveCommand extends Command {
         this.eventName = eventName;
     }
 
+    //@@author LTK-1606
     /**
      * Constructs a RemoveCommand object with the specified event name.
      *

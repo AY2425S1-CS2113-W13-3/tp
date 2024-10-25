@@ -26,6 +26,7 @@ public class Main {
         System.exit(0);
     }
 
+    //@@author MatchaRRR
     /**
      * Run command loop to get command from users
      * Parse the command and execute it
@@ -49,6 +50,7 @@ public class Main {
         }
     }
 
+    //@@author KuanHsienn
     /**
      * Loads events from file and handles exceptions.
      */
@@ -56,8 +58,8 @@ public class Main {
         try {
             storage.loadEvents(events);
             ui.showMessage("Events loaded successfully.");
-        } catch (IOException e) {
-            ui.showErrorMessageToUser(e);
+        } catch (IOException exception) {
+            ui.showErrorMessageToUser(exception);
         }
     }
 

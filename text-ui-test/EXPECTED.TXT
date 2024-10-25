@@ -12,6 +12,7 @@ add -p PARTICIPANT -e EVENT: Add a participant to an event.
 view -e EVENT: View the list of participants of an event.
 remove -p PARTICIPANT -e EVENT: Remove a participant from an event.
 mark -e EVENT -s STATUS: Mark an event as done or not done.
+mark -p PARTICIPANT -e EVENT -s STATUS: Mark a participant as present or absent.
 sort -by KEYWORD: Sorts events by name/time/priority.
 ------------------------
 Enter a command: There are 0 events in your list! Here are your scheduled events:

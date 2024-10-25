@@ -1,5 +1,6 @@
 package seedu.manager.exception;
 
+//@@author jemehgoh
 /**
  * Signals that an entered command is invalid
  */

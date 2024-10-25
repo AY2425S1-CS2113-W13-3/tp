@@ -2,6 +2,7 @@ package seedu.manager.command;
 
 import seedu.manager.event.EventList;
 
+//@@author jemehgoh
 /**
  * Represents an executable command
  */
@@ -19,6 +20,7 @@ public abstract class Command {
         this.canExit = canExit;
     }
 
+    //@@author MatchaRRR
     /**
      * Sets the command's event list to a specified event list
      *
@@ -28,6 +30,7 @@ public abstract class Command {
         this.eventList = events;
     }
 
+    //@@jemehgoh
     /**
      * Executes the command
      */

@@ -4,6 +4,7 @@ import seedu.manager.command.Command;
 
 import java.util.Scanner;
 
+//@@author jemehgoh
 /**
  * Represents the program's user interface
  */
@@ -36,6 +37,7 @@ public class Ui {
         return this.userInput.nextLine();
     }
 
+    //@@author MatchaRRR
     /**
      * Shows the output message of a command to the users.
      */
@@ -44,6 +46,7 @@ public class Ui {
         System.out.println(SEPARATOR);
     }
 
+    //@@author jemehgoh
     /**
      * Shows the error message of an exception to the user.
      */

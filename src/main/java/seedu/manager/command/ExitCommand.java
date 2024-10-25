@@ -1,5 +1,6 @@
 package seedu.manager.command;
 
+//@@author jemehgoh
 /**
  * Represents an executable exit command
  */

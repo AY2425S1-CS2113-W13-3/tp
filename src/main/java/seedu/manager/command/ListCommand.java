@@ -1,6 +1,6 @@
 package seedu.manager.command;
 
-
+//@@author MatchaRRR
 public class ListCommand extends Command {
     public static final String COMMAND_WORD = "list";
     private static final String LIST_MESSAGE = "There are %1$d events in your list! " +

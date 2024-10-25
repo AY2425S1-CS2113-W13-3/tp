@@ -6,7 +6,7 @@ import seedu.manager.event.EventList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class MarkCommandTest {
+class MarkEventCommandTest {
     private EventList eventList;
 
     @BeforeEach
@@ -16,27 +16,27 @@ class MarkCommandTest {
     }
 
     @Test
-    public void execute_eventPresentMarkDone_success() {
+    public void execute_validEventMarkTrue_success() {
         String expectedMessage = "Event marked as done";
-        MarkCommand command = new MarkCommand("Event 1", true);
+        MarkCommand command = new MarkEventCommand("Event 1", true);
         command.setData(eventList);
         command.execute();
         assertEquals(expectedMessage, command.getMessage());
     }
 
     @Test
-    public void execute_eventPresentMarkNotDone_success() {
+    public void execute_validEventMarkFalse_success() {
         String expectedMessage = "Event marked not done";
-        MarkCommand command = new MarkCommand("Event 1", false);
+        MarkCommand command = new MarkEventCommand("Event 1", false);
         command.setData(eventList);
         command.execute();
         assertEquals(expectedMessage, command.getMessage());
     }
 
     @Test
-    public void execute_eventAbsent_failure() {
+    public void execute_invalidEvent_failure() {
         String expectedMessage = "Event not found!";
-        MarkCommand command = new MarkCommand("Event 2", true);
+        MarkCommand command = new MarkEventCommand("Event 2", true);
         command.setData(eventList);
         command.execute();
         assertEquals(expectedMessage, command.getMessage());

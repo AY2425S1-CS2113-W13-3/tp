@@ -1,0 +1,45 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Main {
+}
+
+Main --> Ui
+Main --> Storage
+Main --> EventList
+Main ..> Parser
+Main ..> Command
+
+class Ui {
+}
+
+Ui ..> Command
+
+class Parser {
+}
+
+Parser ..> Command
+
+class Storage {
+}
+
+Storage ..> EventList
+
+abstract class Command {
+}
+
+Command <|-- AddCommand
+Command <|-- ExitCommand
+Command <|-- ListCommand
+Command <|-- XYZCommand
+
+Command ..> EventList
+
+class EventList {
+}
+
+EventList *--> "*" Event
+
+Event *--> "*" Participant
+
+@enduml

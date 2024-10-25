@@ -2,6 +2,7 @@ package seedu.manager.item;
 
 import seedu.manager.event.Event;
 
+//@@author jemehgoh
 /**
  * Represents an event participant, in the participant list of an {@link Event}.
  */

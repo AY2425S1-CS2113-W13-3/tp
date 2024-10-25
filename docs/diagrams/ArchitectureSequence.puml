@@ -1,0 +1,62 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+Participant ":Main" as main
+Participant ":Ui" as ui
+Participant ":Parser" as parser
+Participant ":AddCommand" as command
+Participant ":EventList" as eventList
+
+main -> ui : getCommand()
+activate ui
+ui --> main : "add -e event -t 1200 -v venue"
+deactivate ui
+
+create parser
+main -> parser : Parser()
+activate parser
+parser --> main : :Parser
+deactivate parser
+
+main -> parser : parseCommand("add -e event -t 1200 -v venue")
+activate parser
+
+create command
+parser -> command : AddCommand("event", "1200", "venue")
+activate command
+command --> parser : :AddCommand
+deactivate command
+
+parser --> main : command:AddCommand
+deactivate parser
+destroy parser
+
+main -> command : setData(events:EventList)
+activate command
+command --> main
+deactivate command
+
+main -> command : execute()
+activate command
+
+command -> eventList : addEvent("event", "1200", "venue")
+activate eventList
+eventList --> command
+deactivate eventList
+
+command --> main
+deactivate command
+
+main -> ui : showOutputToUser(command: Command)
+activate ui
+
+ui -> command : getMessage()
+activate command
+
+command --> ui : :String
+deactivate command
+
+ui --> main
+deactivate ui
+
+@enduml

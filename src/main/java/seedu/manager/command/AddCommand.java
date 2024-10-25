@@ -1,5 +1,6 @@
 package seedu.manager.command;
 
+//@@author KuanHsienn
 /**
  * Represents a command to add an event to the event list.
  * The add command will store the event's name, time, and venue.
@@ -28,6 +29,7 @@ public class AddCommand extends Command {
         this.venue = venue;
     }
 
+    //@@author LTK-1606
     /**
      * Constructs an {@code AddCommand} with the specified participant name and event name.
      *
@@ -42,6 +44,7 @@ public class AddCommand extends Command {
         this.eventName = eventName;
     }
 
+    //@@author KuanHsienn
     /**
      * Executes the command to add an event or a participant to an event.
      * <p>
