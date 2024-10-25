@@ -10,6 +10,7 @@ public class SortCommand extends Command {
     public static final String COMMAND_WORD = "sort";
 
     private static final String SORT_BY_NAME_MESSAGE = "Successfully sort events by name!";
+    private static final String SORT_BY_TIME_MESSAGE = "Successfully sort events by time!";
 
     protected String keyword;
 
@@ -37,7 +38,11 @@ public class SortCommand extends Command {
             sortedEventList.sortByName();
             outputMessage.append(SORT_BY_NAME_MESSAGE + "\n");
             break;
-        case "time", "priority":
+        case "time":
+            sortedEventList.sortByTime();
+            outputMessage.append(SORT_BY_TIME_MESSAGE + "\n");
+            break;
+        case "priority":
             break;
         default:
         }

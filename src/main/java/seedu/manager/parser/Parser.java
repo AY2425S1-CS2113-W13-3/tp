@@ -11,6 +11,9 @@ import seedu.manager.command.ViewCommand;
 import seedu.manager.command.SortCommand;
 import seedu.manager.exception.InvalidCommandException;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -52,6 +55,11 @@ public class Parser {
     private static final String INVALID_SORT_KEYWORD_MESSAGE = """
             Invalid sort keyword!
             Please set the sort keyword as either "name"/"time"/"priority"
+            """;
+    private static final String INVALID_DATE_TIME_MESSAGE = """
+            Invalid date-time format!
+            Please use the following format for event time:
+            YYYY-MM-DD HH:mm
             """;
 
     /**
@@ -113,7 +121,9 @@ public class Parser {
                 inputParts = input.split("(-e|-t|-v)");
                 logger.info("Creating AddCommand for event with details: " +
                         inputParts[1].trim() + ", " + inputParts[2].trim() + ", " + inputParts[3].trim());
-                return new AddCommand(inputParts[1].trim(), inputParts[2].trim(), inputParts[3].trim());
+                LocalDateTime eventTime = LocalDateTime.parse(inputParts[2].trim(),
+                        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                return new AddCommand(inputParts[1].trim(), eventTime, inputParts[3].trim());
             } else if (commandFlag.equals("-p")) {
                 inputParts = input.split("(-p|-e)");
                 logger.info("Creating AddCommand for participant with details: " +
@@ -126,6 +136,9 @@ public class Parser {
         } catch (IndexOutOfBoundsException exception) {
             logger.log(WARNING,"Invalid command format");
             throw new InvalidCommandException(INVALID_ADD_MESSAGE);
+        } catch (DateTimeParseException exception) {
+            logger.log(WARNING,"test");
+            throw new InvalidCommandException(INVALID_DATE_TIME_MESSAGE);
         }
     }
 

@@ -51,7 +51,7 @@ class ParserTest {
     @Test
     public void addCommand_addEvent_add() {
         Parser parser = new Parser();
-        Command command = parser.parseCommand("add -e event -t 2024-09-10 -v Venue A");
+        Command command = parser.parseCommand("add -e event -t 2024-09-10 12:34 -v Venue A");
 
         assertInstanceOf(AddCommand.class, command);
     }

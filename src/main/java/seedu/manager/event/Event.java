@@ -2,6 +2,8 @@ package seedu.manager.event;
 
 import seedu.manager.item.Participant;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +13,7 @@ import java.util.ArrayList;
 public class Event {
     protected ArrayList<Participant> participantList;
     private final String eventName;
-    private String eventTime;
+    private LocalDateTime eventTime;
     private String eventVenue;
     private boolean isDone;
 
@@ -32,7 +34,7 @@ public class Event {
      * @param eventTime  the time duration of the event
      * @param eventVenue the venue of the event
      */
-    public Event(String eventName, String eventTime, String eventVenue) {
+    public Event(String eventName, LocalDateTime eventTime, String eventVenue) {
         this.eventName = eventName;
         this.eventTime = eventTime;
         this.eventVenue = eventVenue;
@@ -88,7 +90,7 @@ public class Event {
     /**
      * @return the event time
      */
-    public String getEventTime() {
+    public LocalDateTime getEventTime() {
         return eventTime;
     }
 
@@ -115,7 +117,7 @@ public class Event {
      *
      * @param eventTime the new event time
      */
-    public void setEventTime(String eventTime) {
+    public void setEventTime(LocalDateTime eventTime) {
         this.eventTime = eventTime;
     }
 
@@ -145,13 +147,24 @@ public class Event {
     }
 
     /**
+     * Formats eventTime to a string in "yyyy-MM-dd HH:mm" format
+     *
+     * @return eventTime as a formated {@link String} object.
+     */
+    public String formatEventTime() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        return formatter.format(eventTime);
+    }
+
+    /**
      * Returns a string representation of the event, indicating its name, time and venue.
      *
      * @return A string that shows the event's name, time and venue.
      */
     @Override
     public String toString(){
-        return String.format("Event name: %s / Event time: %s / Event venue: %s / Done: %c", eventName, eventTime,
+        String eventTimeString = formatEventTime();
+        return String.format("Event name: %s / Event time: %s / Event venue: %s / Done: %c", eventName, eventTimeString,
                 eventVenue, markIfDone());
     }
 }

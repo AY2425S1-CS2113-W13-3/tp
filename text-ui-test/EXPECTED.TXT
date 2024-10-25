@@ -25,13 +25,13 @@ add -p PARTICIPANT -e EVENT
 Enter a command: Event added successfully
 ------------------------
 Enter a command: There are 1 events in your list! Here are your scheduled events:
-1. Event name: dinner party / Event time: 2024-10-10 / Event venue: Alice's House / Done: N
+1. Event name: dinner party / Event time: 2024-10-10 12:34 / Event venue: Alice's House / Done: N
 
 ------------------------
 Enter a command: Event marked as done
 ------------------------
 Enter a command: There are 1 events in your list! Here are your scheduled events:
-1. Event name: dinner party / Event time: 2024-10-10 / Event venue: Alice's House / Done: Y
+1. Event name: dinner party / Event time: 2024-10-10 12:34 / Event venue: Alice's House / Done: Y
 
 ------------------------
 Enter a command: Event not found!
@@ -46,8 +46,14 @@ Enter a command: Event added successfully
 ------------------------
 Enter a command: name
 Successfully sort events by name!
-1. Event name: anniversary celebration / Event time: 2024-10-23 / Event venue: hotel / Done: N
-2. Event name: dinner party / Event time: 2024-10-10 / Event venue: Alice's House / Done: Y
+1. Event name: anniversary celebration / Event time: 2024-10-23 12:34 / Event venue: hotel / Done: N
+2. Event name: dinner party / Event time: 2024-10-10 12:34 / Event venue: Alice's House / Done: Y
+
+------------------------
+Enter a command: time
+Successfully sort events by time!
+1. Event name: dinner party / Event time: 2024-10-10 12:34 / Event venue: Alice's House / Done: Y
+2. Event name: anniversary celebration / Event time: 2024-10-23 12:34 / Event venue: hotel / Done: N
 
 ------------------------
 Enter a command: Thank you for using EventManagerCLI. Goodbye!
