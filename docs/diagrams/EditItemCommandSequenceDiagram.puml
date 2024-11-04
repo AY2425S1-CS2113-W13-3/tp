@@ -1,0 +1,39 @@
+@startuml
+hide footbox
+
+participant ":Main" as main
+participant ":EditItemCommand" as editCommand
+participant ":EventList" as eventList
+participant ":Event" as event
+
+main -> editCommand : execute()
+activate editCommand
+
+editCommand -> eventList : editItem(itemName, itemNewName, eventName)
+activate eventList
+
+loop for each event in eventList
+    eventList -> event : getEventName()
+    activate event
+    event --> eventList : eventName
+    deactivate event
+
+    alt eventName matches
+        eventList -> event : updateItem(itemName, itemNewName)
+        activate event
+        event --> eventList : item updated
+        deactivate event
+        eventList --> editCommand : true
+
+    end
+
+end
+
+alt no match found
+    eventList --> editCommand : false
+end
+
+editCommand --> main : message
+deactivate eventList
+deactivate editCommand
+@enduml

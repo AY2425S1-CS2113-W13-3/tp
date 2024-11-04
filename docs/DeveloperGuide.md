@@ -357,6 +357,40 @@ The values of `eventName` and `isViewingParticipants` are set by the user throug
 The `Parser` assigns the event parameter directly to `eventName`. Conversely, it sets `isViewingParticipants` to true if the type parameter value is `participant`, 
 to false if the type parameter value is `item`, and treats any other value entered as invalid.
 
+### Edit feature
+
+The `edit` feature allows users to edit the information of an event, or the information of a participant/item in an event.
+This feature is implemented in the `EditEventCommand` `EditParticipantCommand` `EditItemCommand` classes, which extends the `Command` base class and utilises the flag to determine the edit content.
+
+The feature comprises three operations, namely:
+* `EditEventCommand#execute`, which edits the information of an event.
+* `EditParticipantCommand#execute`, which edits the information of a participant in an event.
+* `EditItemCommand#execute`, which edits the information of an item in an event.
+   
+The above three operations override the `Command#execute()` operation in `Command`,
+and is invoked when the latter operation is called.
+
+#### Feature implementation
+
+Given below is an example usage scenario and the behaviour of the `edit` feature at each step:
+1. The user enters the command edit followed by a flag (-e/-p/-m) to edit the information of event/participant/item.
+2. If the flag is `-e`, `EditEventCommand` calls `EditEventCommand#execute`, which calls `EventList#editEvent` to edit the event.
+3. If the flag is `-e`, `EditParticipatCommand` calls `EditParticipatCommand#execute`, which calls `EventList#editParticipant` to edit the participant.
+4. If the flag is `-e`, `EditItemCommand` calls `EditItemCommand#execute`, which calls `EventList#editItem` to edit the item.
+5. After Editing, a success message `outputMessage` will be printed.
+
+The interactions between components of `EditEventCommand#execute` are shown in the **Sequence Diagram** below:
+
+<img src="images/EditEventCommandSequenceDiagram.png">
+
+The interactions between components of `EditParticipantCommand#execute` are shown in the **Sequence Diagram** below:
+
+<img src="images/EditParticipantCommandSequenceDiagram.png">
+
+The interactions between components of `EditItemCommand#execute` are shown in the **Sequence Diagram** below:
+
+<img src="images/EditItemCommandSequenceDiagram.png">
+
 ### Mark/unmark feature
 
 The `mark/unmark` feature allows users to mark and unmark `Event`s in the `EventList`, or `Participant`s or `Item`s stored in an `Event`. The feature comprises the abstract `MarkCommand` class,
@@ -466,7 +500,7 @@ Given below is an example usage scenario and the behaviour of the `sort` feature
 2. `SortCommand` calls `SortCommand#execute`, which based on the keyword invokes one of the following 3 methods
     * `sortByName()` - Sort events alphabetically by name
     * `sortByTime()` - Sort events chronologically by time
-    * `sortByPriority` - Sort events by priority level
+    * `sortByPriority()` - Sort events by priority level
     
     After sorting, a success message is appended to `outputMessage` which indicates the sorting criterion used
 3. The final sorted list is then formatted and appended to `outputMessage`,
