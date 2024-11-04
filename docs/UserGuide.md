@@ -39,8 +39,9 @@ add -m ITEM -e EVENT: Add an item to an event.
 remove -e EVENT: Remove an event from the event list.
 remove -p PARTICIPANT -e EVENT: Remove a participant from an event.
 remove -m ITEM -e EVENT: Remove an item from an event.
-edit -p PARTICIPANT -n NUMBER -email EMAIL -e EVENT: Edit participant contact info.
 edit -e EVENT -name EVENT_NAME -t TIME -v VENUE -u PRIORITY: Edit event info.
+edit -m ITEM > NEW_ITEM -e EVENT: Edit an item in an event.
+edit -p PARTICIPANT -n NUMBER -email EMAIL -e EVENT: Edit participant contact info.
 mark -e EVENT -s STATUS: Mark an event as done or not done.
 mark -p PARTICIPANT -e EVENT -s STATUS: Mark a participant as present or absent.
 mark -m ITEM -e EVENT -s STATUS: Mark an item as accounted or unaccounted.
@@ -94,17 +95,19 @@ Examples:
 
 ### Edit the information of an event or a participant: `edit`
 
-Edit the name/time/venue/priority of an event, or edit the number/email of a participant.
+Edit the information of an event/participant/item.
 
 Format:
 
-* `edit -p PARTICIPANT -n NUMBER -email EMAIL -e EVENT` for editing a participant's contact information in an event.
 * `edit -e EVENT -name EVENT_NAME -t TIME -v VENUE -u PRIORITY` for editing an event's basic information.
+* `edit -p PARTICIPANT -n NUMBER -email EMAIL -e EVENT` for editing a participant's contact information in an event.
+* `edit -m ITEM > NEW_ITEM -e EVENT` for editing an item's information in an event.
 
 Examples:
 
 * `edit -p Mary -n 9182 3213 -email mary@gmail.com -e CS2113`
 * `edit -e CS2113 -name CS2113T -t 2024-10-25 16:00 -v LT16 -u HIGH`
+* `edit -m balloon > cake -e anniversary`
 
 ### View all participants or items for an event: `view`
 
@@ -160,7 +163,7 @@ Examples:
 
 * `mark -m Origami paper -e Origami workshop -s done` marks the item `Origami paper` in the `Origami workshop` event as accounted.
 * `mark -m Origami paper -e Origami workshop -s undone` marks the item `Origami paper` in the `Origami workshop` event as unaccounted.
-* 
+
 ### Copies participant list: `copy`
 
 Copies the participant list from one event to another event.
