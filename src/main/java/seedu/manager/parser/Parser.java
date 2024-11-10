@@ -147,6 +147,10 @@ public class Parser {
             One of your input fields are empty!
             Please fill in every field appropriately!
             """;
+    private static final String NON_ENGLISH_MESSAGE = """
+            Invalid input!
+            Please only use ASCII characters!
+            """;
 
     private static final String EVENT_FLAG = "-e";
     private static final String PARTICIPANT_FLAG = "-p";
@@ -170,6 +174,7 @@ public class Parser {
     private static final String FILTER_FLAG_REGEX = "(-e|-d|-t|-x|-u)";
     private static final String FIND_FLAG_REGEX = "(-e|-p)";
 
+    private static final Pattern ASCII_PATTERN = Pattern.compile("^[\\x00-\\x7F]+$");
     private static final String ADD_EVENT_REGEX = "add\\s+-e\\s+(.*?)\\s+-t\\s+(.*?)\\s+-v\\s+(.*?)\\s+-u\\s+(.*)";
     private static final String ADD_PARTICIPANT_REGEX = "add\\s+-p\\s+(.*?)\\s+" +
             "-email\\s+(.*?)\\s+-e\\s+(.*)";
@@ -210,6 +215,10 @@ public class Parser {
      * @throws IOException if the log file cannot be written to.
      */
     public Command parseCommand(String command) throws InvalidCommandException, IOException {
+        Matcher matcher = ASCII_PATTERN.matcher(command);
+        if (!matcher.matches()) {
+            throw new InvalidCommandException(NON_ENGLISH_MESSAGE);
+        }
         String[] commandParts = command.trim().split(SPACE);
         command = command.trim();
         String commandWord = commandParts[0].toLowerCase();
